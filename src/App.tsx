@@ -16,11 +16,11 @@ function App() {
 	const [ tracks, setTracks] = useState(null)
 
 	useEffect (() => {
-			fetch("https://musicfun.it-incubator.app/api/1.0/playlists/tracks", {
-				headers: {
-					"api-key": "04cc8070-7576-45f7-acfb-ebd654d99edb"
-				}
-			})
+		fetch(import.meta.env.VITE_API_URL, {
+		headers: {
+			"api-key": import.meta.env.VITE_API_KEY,
+		},
+		})
 			.then((res) => res.json())
 			.then((json) => setTracks(json.data))
 	}, [])
