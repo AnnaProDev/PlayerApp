@@ -78,9 +78,9 @@ img {
 } */
 
 #root {
-  margin: 0 auto;
+  margin: 50px;
   padding: 2rem;
-  text-align: center;
+  height: 100vh;
 }
 
 button {
@@ -100,15 +100,16 @@ h1 {
 	margin-bottom: 20px;
 }
 
-.track_list {
-  display: flex;
-  flex-wrap: wrap;     
-  gap: 20px;            
-  justify-content: center;  
+.tracks {
+	margin-top: 2rem;
+	display: flex;
+	gap: 50px;
+	text-align: center;
 }
 
+
 .track_item {
-	margin-top: 20px;
+	margin-bottom: 1rem;
 	padding: 10px;
 	border-radius: 10px;
 	border: 2px solid darkgrey;
@@ -119,4 +120,21 @@ h1 {
 	font-size: 20px;
 	font-weight: 600;
 	line-height: 32px;
+}
+
+.track_info {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	width: 500px;
+	padding: 10px;
+	min-height: 100px;
+	height: fit-content;
+	border: 2px solid darkgrey;
+	border-radius: 10px;
+}
+
+.track_info_title {
+	margin-top: 10px;
+	font-size: 1.2rem;
 }
