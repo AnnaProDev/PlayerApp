@@ -53,6 +53,7 @@ function App() {
 						className= "track_item"
 						onClick={() => {
 							setSelectedTrackId(track.id);
+							setSelectedTrack(null)
 							fetch(`${import.meta.env.VITE_API_URL}${track.id}`, {
 							headers: {
 								"api-key": import.meta.env.VITE_API_KEY,
@@ -69,12 +70,22 @@ function App() {
 				}
 			</ul>
 			{ 
-  			(selectedTrack 
+  			(selectedTrackId 
 			? 	<div className= "track_info">
 				<h2>Details</h2>
-				<h3 className='track_info_title'>{selectedTrack.attributes.title}</h3>
-				<h4>Lyrics</h4>
-            <p>{selectedTrack.attributes.lyrics ?? "no lyrics"}</p>
+
+				{selectedTrack
+				? <>
+						<h3 className='track_info_title'>{selectedTrack.attributes.title}</h3>
+						<h4>Lyrics</h4>
+						<p>{selectedTrack.attributes.lyrics ?? "no lyrics"}</p>
+					</>
+				: <p>Loading...</p>
+				}
+				
+
+
+
 			</div>
 			: "")
 		}
