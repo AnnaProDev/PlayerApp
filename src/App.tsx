@@ -20,6 +20,16 @@ function App() {
 	}, [])
 
 
+	useEffect(() => {
+		fetch(`${import.meta.env.VITE_API_URL}${selectedTrackId}`, {
+			headers: {
+				"api-key": import.meta.env.VITE_API_KEY,
+			},
+		})
+			.then((res) => res.json())
+			.then((json) => setSelectedTrack(json.data))
+	}, [selectedTrackId])
+
 	if ( tracks === null) {
 		return (
 			<div>
@@ -53,13 +63,6 @@ function App() {
 						className= "track_item"
 						onClick={() => {
 							setSelectedTrackId(track.id);
-							fetch(`${import.meta.env.VITE_API_URL}${track.id}`, {
-							headers: {
-								"api-key": import.meta.env.VITE_API_KEY,
-							},
-						})
-								.then((res) => res.json())
-								.then((json) => setSelectedTrack(json.data))
 						}}
 						style={ { border: track.id === selectedTrackId ? "2px solid lightgreen" : ""}}>
 						<div className= "track_title">{track.attributes.title}</div>
