@@ -1,26 +1,26 @@
 import { useEffect, useState } from "react";
 
-export function TrackDetail(props) {
+export function TrackDetail({ selectedTrackId }) {
 	const [selectedTrack, setSelectedTrack] = useState(null);
 
 	useEffect(() => {
-		fetch(`${import.meta.env.VITE_API_URL}${props.selectedTrackId}`, {
+		fetch(`${import.meta.env.VITE_API_URL}${selectedTrackId}`, {
 			headers: {
 				"api-key": import.meta.env.VITE_API_KEY,
 			},
 		})
 			.then((res) => res.json())
 			.then((json) => setSelectedTrack(json.data));
-	}, [props.selectedTrackId]);
+	}, [selectedTrackId]);
 
 	return (
 		<div className="track_info">
 			<h2>Details</h2>
-			{!selectedTrack && !props.selectedTrackId && "Track is not selected"}
-			{!selectedTrack && props.selectedTrackId && "Loading..."}
+			{!selectedTrack && !selectedTrackId && "Track is not selected"}
+			{!selectedTrack && selectedTrackId && "Loading..."}
 			{selectedTrack &&
-				props.selectedTrackId &&
-				props.selectedTrackId !== selectedTrack.id &&
+				selectedTrackId &&
+				selectedTrackId !== selectedTrack.id &&
 				"Loading..."}
 			{selectedTrack && (
 				<>

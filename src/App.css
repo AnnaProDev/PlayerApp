@@ -85,7 +85,7 @@ img {
 
 button {
 	border: 1px solid black;
-	margin-top: 20px;
+	margin: 20px 0;
 	background-color: lightcoral;
 	transition: all 0.5s ease;
 	cursor:pointer

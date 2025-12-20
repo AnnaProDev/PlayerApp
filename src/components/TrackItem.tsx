@@ -1,20 +1,18 @@
 import "../App.css";
 
-
-
-export function TrackItem(props) {
+export function TrackItem({ onTrackSelected, isSelect, track }) {
 	return (
 		<li
 			className="track_item"
 			onClick={() => {
-				props.onTrackSelected(props.track.id);
+				onTrackSelected(track.id);
 			}}
 			style={{
-				borderColor: props.isSelect ? "lightgreen" : "",
+				borderColor: isSelect ? "lightgreen" : "",
 			}}
 		>
-			<div className="track_title">{props.track.attributes.title}</div>
-			<audio controls src={props.track.attributes.attachments[0].url}></audio>
+			<div className="track_title">{track.attributes.title}</div>
+			<audio controls src={track.attributes.attachments[0].url}></audio>
 		</li>
 	);
 }
