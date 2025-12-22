@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import loadingGif from "../assets/load-grey.gif";
 import "../App.css";
-import { TrackItem } from "./TrackItem";
+import { TrackItem, type TrackListItemOutput } from "./TrackItem";
 
-export function TrackList({ onTrackSelected, selectedTrack }) {
-	const [tracks, setTracks] = useState(null);
+type Props = {
+	selectedTrackId: string | null;
+	onTrackSelected: (id: string | null) => void;
+};
+
+export function TrackList({ onTrackSelected, selectedTrackId }: Props) {
+	const [tracks, setTracks] = useState<Array<TrackListItemOutput> | null>(null);
 
 	useEffect(() => {
 		fetch(import.meta.env.VITE_API_URL, {
@@ -40,12 +45,12 @@ export function TrackList({ onTrackSelected, selectedTrack }) {
 			>
 				RESET
 			</button>
-			{tracks.map((track) => {
+			{tracks.map((track: TrackListItemOutput) => {
 				return (
 					<TrackItem
 						key={track.id}
 						track={track}
-						isSelect={track.id === selectedTrack}
+						isSelected={track.id === selectedTrackId}
 						onTrackSelected={onTrackSelected}
 					/>
 				);

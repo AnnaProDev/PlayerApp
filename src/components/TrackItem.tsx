@@ -1,6 +1,26 @@
 import "../App.css";
 
-export function TrackItem({ onTrackSelected, isSelect, track }) {
+type TrackAttachment = {
+	url: string
+}
+
+type TrackListItemOutputAttributes = {
+    title: string
+    attachments: Array<TrackAttachment>
+}
+
+export type TrackListItemOutput = {
+	id: string;
+	attributes: TrackListItemOutputAttributes
+};
+
+type Props = {
+	isSelected: boolean
+	onTrackSelected: (trackId: string) => void
+	track: TrackListItemOutput
+}
+
+export function TrackItem({ onTrackSelected, isSelected, track }: Props) {
 	return (
 		<li
 			className="track_item"
@@ -8,7 +28,7 @@ export function TrackItem({ onTrackSelected, isSelect, track }) {
 				onTrackSelected(track.id);
 			}}
 			style={{
-				borderColor: isSelect ? "lightgreen" : "",
+				borderColor: isSelected ? "lightgreen" : "",
 			}}
 		>
 			<div className="track_title">{track.attributes.title}</div>

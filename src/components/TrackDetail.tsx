@@ -1,7 +1,19 @@
 import { useEffect, useState } from "react";
 
-export function TrackDetail({ selectedTrackId }) {
-	const [selectedTrack, setSelectedTrack] = useState(null);
+type GetTrackDetailsOutputData = {
+	id: string
+	attributes: {
+		title: string
+		lyrics: string | null
+	}
+}
+
+type Props = {
+	selectedTrackId: string | null
+}
+
+export function TrackDetail({ selectedTrackId }: Props) {
+	const [selectedTrack, setSelectedTrack] = useState< GetTrackDetailsOutputData | null>(null);
 
 	useEffect(() => {
 		fetch(`${import.meta.env.VITE_API_URL}${selectedTrackId}`, {
