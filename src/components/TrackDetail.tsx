@@ -1,28 +1,17 @@
 import { useEffect, useState } from "react";
+import { getTrack, type GetTrackDetailsOutputData } from "../dal/api";
 
-type GetTrackDetailsOutputData = {
-	id: string
-	attributes: {
-		title: string
-		lyrics: string | null
-	}
-}
+
 
 type Props = {
-	selectedTrackId: string | null
+	selectedTrackId: string
 }
 
 export function TrackDetail({ selectedTrackId }: Props) {
 	const [selectedTrack, setSelectedTrack] = useState< GetTrackDetailsOutputData | null>(null);
 
 	useEffect(() => {
-		fetch(`${import.meta.env.VITE_API_URL}${selectedTrackId}`, {
-			headers: {
-				"api-key": import.meta.env.VITE_API_KEY,
-			},
-		})
-			.then((res) => res.json())
-			.then((json) => setSelectedTrack(json.data));
+			getTrack(selectedTrackId).then((json) => setSelectedTrack(json.data));
 	}, [selectedTrackId]);
 
 	return (

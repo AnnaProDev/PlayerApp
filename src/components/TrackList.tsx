@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import loadingGif from "../assets/load-grey.gif";
 import "../App.css";
-import { TrackItem, type TrackListItemOutput } from "./TrackItem";
+import { TrackItem} from "./TrackItem";
+import { getTracks, type TrackListItemOutput  } from "../dal/api";
 
 type Props = {
 	selectedTrackId: string | null;
@@ -12,13 +13,7 @@ export function TrackList({ onTrackSelected, selectedTrackId }: Props) {
 	const [tracks, setTracks] = useState<Array<TrackListItemOutput> | null>(null);
 
 	useEffect(() => {
-		fetch(import.meta.env.VITE_API_URL, {
-			headers: {
-				"api-key": import.meta.env.VITE_API_KEY,
-			},
-		})
-			.then((res) => res.json())
-			.then((json) => setTracks(json.data));
+		getTracks().then((json) => setTracks(json.data));
 	}, []);
 
 	if (tracks === null) {

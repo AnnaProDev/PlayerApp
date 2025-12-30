@@ -1,18 +1,5 @@
 import "../App.css";
-
-type TrackAttachment = {
-	url: string
-}
-
-type TrackListItemOutputAttributes = {
-    title: string
-    attachments: Array<TrackAttachment>
-}
-
-export type TrackListItemOutput = {
-	id: string;
-	attributes: TrackListItemOutputAttributes
-};
+import type {TrackListItemOutput } from "../dal/api";
 
 type Props = {
 	isSelected: boolean
