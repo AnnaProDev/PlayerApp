@@ -35,13 +35,149 @@ h1 {
 	line-height: 1.1;
 }
 
-button {
-	border-radius: 8px;
-	border: 1px solid transparent;
-	padding: 0.6em 1.2em;
-	font-size: 1em;
-	font-weight: 500;
+
+* {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	background-color: grey;
+
+&:before, &:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+}
+
+:focus, :active {
+	outline: none;
+}
+
+a {
+	&:focus, &:active {
+		outline: none;
+	}
+}
+
+nav, footer, header, aside {
+	display: block;
+}
+
+html, body {
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
 	font-family: inherit;
+}
+
+input::-ms-clear {
+	display: none;
+}
+
+button {
 	cursor: pointer;
-	transition: border-color 0.25s;
+
+	&::-moz-focus-inner {
+		padding: 0;
+		border: 0;
+	}
+}
+
+a {
+	text-decoration: none;
+
+	&:visited, &:hover {
+		text-decoration: none;
+	}
+}
+
+li {
+	list-style: none;
+}
+
+img {
+	vertical-align: top;
+}
+
+/* h1, h2, h3, h4, h5, h6 {
+	font-size: inherit;
+	font-weight: 400;
+} */
+
+#root {
+  margin: 50px;
+  padding: 2rem;
+  height: 100vh;
+}
+
+button {
+  margin: 20px 0;
+  padding: 0.6em 1.2em;
+  font: 500 1em inherit;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 8px;
+  background-color: lightcoral;
+  transition: all 0.5s ease;
+}
+
+button:hover {
+	background-color: rgb(235, 80, 80);
+	border-color:aliceblue;
+}
+
+h1 {
+	margin-bottom: 20px;
+}
+
+.tracks {
+	margin-top: 2rem;
+	display: flex;
+	gap: 50px;
+	text-align: center;
+}
+
+
+.track_item {
+	margin-bottom: 1rem;
+	padding: 10px;
+	border-radius: 10px;
+	border: 4px solid darkgrey;
+	width: fit-content;
+}
+
+.track_title {
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 32px;
+}
+
+.track_info {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	width: 500px;
+	padding: 10px;
+	min-height: 100px;
+	height: fit-content;
+	border: 2px solid darkgrey;
+	border-radius: 10px;
+}
+.track_info h4 {
+	line-height: 2rem;
+}
+.track_info_title {
+	margin-top: 10px;
+	font-size: 1.2rem;
 }

@@ -1,4 +1,3 @@
-import "../App.css";
 import type {TrackListItemOutput } from "../dal/api";
 
 type Props = {

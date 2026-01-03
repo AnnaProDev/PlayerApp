@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
 import loadingGif from "../assets/load-grey.gif";
-import "../App.css";
 import { TrackItem} from "./TrackItem";
-import { getTracks, type TrackListItemOutput  } from "../dal/api";
+import { type TrackListItemOutput  } from "../dal/api";
+import { useTracks } from "../bll/useTracks";
 
 type Props = {
 	selectedTrackId: string | null;
@@ -10,11 +9,7 @@ type Props = {
 };
 
 export function TrackList({ onTrackSelected, selectedTrackId }: Props) {
-	const [tracks, setTracks] = useState<Array<TrackListItemOutput> | null>(null);
-
-	useEffect(() => {
-		getTracks().then((json) => setTracks(json.data));
-	}, []);
+	const { tracks } = useTracks()
 
 	if (tracks === null) {
 		return (
