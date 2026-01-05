@@ -2,6 +2,7 @@ import loadingGif from "../assets/load-grey.gif";
 import { TrackItem} from "./TrackItem";
 import { type TrackListItemOutput  } from "../dal/api";
 import { useTracks } from "../bll/useTracks";
+import styles from "./TrackList.module.css"
 
 type Props = {
 	selectedTrackId: string | null;
@@ -27,7 +28,7 @@ export function TrackList({ onTrackSelected, selectedTrackId }: Props) {
 		);
 	}
 	return (
-		<div className="track_list">
+		<div className={styles.tracks}>
 			<button
 				onClick={() => {
 					onTrackSelected(null);
